@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>YouTube Downloader - AKM</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body{
+      background:#0f0f0f;
+      color:white;
+      min-height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      padding:20px;
+    }
+
+    .container{
+      width:100%;
+      max-width:500px;
+      background:#1b1b1b;
+      padding:30px;
+      border-radius:20px;
+      box-shadow:0 0 20px rgba(255,0,0,0.3);
+      text-align:center;
+    }
+
+    h1{
+      margin-bottom:20px;
+      color:#ff0000;
+      font-size:32px;
+    }
+
+    p{
+      color:#bbb;
+      margin-bottom:20px;
+    }
+
+    input{
+      width:100%;
+      padding:15px;
+      border:none;
+      border-radius:10px;
+      outline:none;
+      font-size:16px;
+      margin-bottom:20px;
+    }
+
+    button{
+      width:100%;
+      padding:15px;
+      border:none;
+      border-radius:10px;
+      background:#ff0000;
+      color:white;
+      font-size:18px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    button:hover{
+      background:#cc0000;
+    }
+
+    .result{
+      margin-top:25px;
+      display:none;
+    }
+
+    .download-btn{
+      display:inline-block;
+      margin-top:15px;
+      padding:12px 20px;
+      background:#00c853;
+      color:white;
+      text-decoration:none;
+      border-radius:10px;
+      font-weight:bold;
+    }
+
+    .download-btn:hover{
+      background:#00a844;
+    }
+
+    .note{
+      margin-top:20px;
+      color:#888;
+      font-size:13px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>AKM Downloader</h1>
+
+    <p>Paste YouTube Video URL</p>
+
+    <input 
+      type="text" 
+      id="videoUrl" 
+      placeholder="https://youtube.com/watch?v=..."
+    >
+
+    <button onclick="downloadVideo()">
+      Download Video
+    </button>
+
+    <div class="result" id="result">
+      <h3>Video Ready</h3>
+
+      <a 
+        id="downloadLink"
+        class="download-btn"
+        target="_blank"
+      >
+        Download Now
+      </a>
+    </div>
+
+    <div class="note">
+      Educational Purpose Only
+    </div>
+  </div>
+
+  <script>
+    function downloadVideo(){
+
+      const url = document.getElementById("videoUrl").value;
+
+      if(url === ""){
+        alert("Please paste YouTube URL");
+        return;
+      }
+
+      // Demo Downloader API
+      const api = "https://loader.to/api/button/?url=" + encodeURIComponent(url);
+
+      document.getElementById("result").style.display = "block";
+
+      document.getElementById("downloadLink").href = api;
+    }
+  </script>
+
+</body>
+  </html>
